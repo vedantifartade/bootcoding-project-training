@@ -6,21 +6,20 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class MenuItemDAO {
-    public static final String TABLE_NAME = "menu_item";
-    public void crateTable(){
+    public static final String TABLE_NAME = "app_menu_item";
+    public void createTable(){
         try {
             Class.forName("org.postgresql.Driver");
             Connection con = DriverManager
                     .getConnection("jdbc:postgresql://localhost:5432/postgres","postgres","ved@2511");
             Statement stmt = con.createStatement();
             String sql = "Select * from " + TABLE_NAME;
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()){
-                System.out.println("Menu Item Name = " + rs.getString("menu_item_name"));
-                System.out.println("Prize = " + rs.getString("price"));
-                System.out.println("Category = " + rs.getString("category"));
-                System.out.println("IsVeg = " + rs.getString("is_veg"));
-            }
+            String query = "CREATE TABLE IF NOT EXISTS "+TABLE_NAME+" (id bigint NOT NULL,"+"vendor_id bigint,"
+                    +"menu_item_name text, "+"price decimal, "
+                    +"category text,"+"is_veg bool,"
+                    +"CONSTRAINT app_menu_item_pk PRIMARY KEY (id))";
+            System.out.println("Create Table query : "+query);
+            stmt.executeUpdate(query);
         }catch (Exception ex){
             ex.printStackTrace();
         }

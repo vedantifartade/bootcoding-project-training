@@ -56,18 +56,18 @@ public class Application {
         System.out.println("Order Delivery Address:" + order.getDeliveryAddress());
 
       CustomerDAO customerDao = new CustomerDAO();
-      customerDao.crateTable();
+      customerDao.createTable();
 
         MenuItemDAO menuItemDAO = new MenuItemDAO();
-        menuItemDAO.crateTable();
+        menuItemDAO.createTable();
 
         OrderDAO orderDAO = new OrderDAO();
-        orderDAO.crateTable();
+        orderDAO.createTable();
 
         OrderMenuItemDAO orderMenuItemDAO = new OrderMenuItemDAO();
-        orderMenuItemDAO.crateTable();
+        orderMenuItemDAO.createTable();
 
         VendorDAO vendorDAO = new VendorDAO();
-        vendorDAO.crateTable();
+        vendorDAO.createTable();
     }
 }
