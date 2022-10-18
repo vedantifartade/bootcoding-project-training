@@ -3,7 +3,9 @@ package com.online.restuarent.app;
 import com.online.restuarent.Customer;
 import com.online.restuarent.Vendor;
 import com.online.restuarent.Order;
+import com.online.restuarent.dao.*;
 
+import java.sql.SQLOutput;
 import java.util.Date;
 
 public class Application {
@@ -49,6 +51,23 @@ public class Application {
         order.setOrderDate(new Date());
         order.setDeliveryAddress("101,Civil Lines,Nagpur");
 
+        System.out.println("Order Details:");
+        System.out.println("Order Date:" + order.getOrderDate());
+        System.out.println("Order Delivery Address:" + order.getDeliveryAddress());
 
+      CustomerDAO customerDao = new CustomerDAO();
+      customerDao.crateTable();
+
+        MenuItemDAO menuItemDAO = new MenuItemDAO();
+        menuItemDAO.crateTable();
+
+        OrderDAO orderDAO = new OrderDAO();
+        orderDAO.crateTable();
+
+        OrderMenuItemDAO orderMenuItemDAO = new OrderMenuItemDAO();
+        orderMenuItemDAO.crateTable();
+
+        VendorDAO vendorDAO = new VendorDAO();
+        vendorDAO.crateTable();
     }
 }
